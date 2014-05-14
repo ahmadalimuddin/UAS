@@ -1,0 +1,122 @@
+#include <iostream>
+#include <conio.h>
+
+using namespace std;
+
+int domba[10];
+
+void menu1()
+{
+	cout<<"Masukan Data Domba: "<<endl<<endl;
+	for(int i=0; i<10; i++)
+	{
+		cout<<"Umur domba ke-"<<i+1<<" : ";
+		cin>>domba[i];
+	}
+	getch();
+	system("cls");
+}
+
+void menu2()
+{
+	cout<<"Data Domba: "<<endl<<endl;
+	for(int i=0; i<10; i++)
+	{
+		cout<<"Domba "<<i+1<<" - Umur: "<<domba[i]<<" tahun"<<endl;
+	}
+	getch();
+	system("cls");
+}
+
+void menu3()
+{
+	int temp;
+	cout<<"Mengurutkan Umur Domba: "<<endl<<endl;
+	for(int i=0; i<10; i++)
+	{
+		for(int j=0; j<10; j++)
+		{
+			if(domba[i]<domba[j])
+			{
+				temp=domba[i];
+				domba[i]=domba[j];
+				domba[j]=temp;
+			}
+		}
+	}
+
+	for(int i=0; i<10; i++)
+	{
+		cout<<"Domba "<<i+1<<" - Umur: "<<domba[i]<<" tahun"<<endl;
+	}
+	getch();
+	system("cls");
+}
+
+void menu4()
+{	
+	bool ketemu=false;
+	int cari;
+	cout<<"Search Umur Domba: ";
+	cin>>cari;
+	cout<<endl;
+
+	for(int i=0; i<10; i++)
+	{
+		if(cari==domba[i])
+		{
+			cout<<"Domba yang berumur "<<cari<<" tahun adalah domba ke-"<<i+1<<endl;
+			ketemu=true;
+		}
+	}
+	if(ketemu==false)
+	{
+		cout<<"Tidak ada domba yang berumur "<<cari<<" tahun"<<endl;
+	}
+	
+	getch();
+	system("cls");
+}
+
+void main()
+{
+menu:;
+	int pilih;
+	cout<<"PETERNAKAN DOMBA"<<endl<<endl;
+	cout<<"1. Input Data Domba"<<endl;
+	cout<<"2. Lihat Data Domba"<<endl;
+	cout<<"3. Sorting Umur Domba"<<endl;
+	cout<<"4. Search Umur Domba"<<endl<<endl;
+	cout<<"Pilih Menu: ";
+	cin>>pilih;
+	system("cls");
+
+	if(pilih==1)
+	{
+		menu1();
+		goto menu;
+	}
+
+	else if(pilih==2)
+	{
+		menu2();
+		goto menu;
+	}
+
+	else if(pilih==3)
+	{
+		menu3();
+		goto menu;
+	}
+
+	else if(pilih==4)
+	{
+		menu4();
+		goto menu;
+	}
+
+	else
+	{
+		exit(0);
+	}
+}
