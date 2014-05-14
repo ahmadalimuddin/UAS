@@ -1,0 +1,182 @@
+#include <iostream>
+#include <string>
+#include <conio.h>
+using namespace std;
+
+struct menuUtama
+{
+	char kode;
+	string MA;
+	string MI;
+	int harga;
+}utama;
+
+struct menuTambahan
+{
+	int kode;
+	string menu;
+	int harga;
+}tambahan;
+
+int total;
+int jumlah;
+int pajak;
+
+void menu1()
+{
+pilihlagi:;
+	cout<<"MENU UTAMA"<<endl<<endl;
+	cout<<"Kode Paket: A	"<<"Kode Paket: B	"<<"Kode Paket: C"<<endl;
+	cout<<"Ayam Penyet	"<<"Ayam Gulai	"<<"Ayam Bakar	"<<endl;
+	cout<<"Es Teh Manis	"<<"Es Blewah	"<<"Es Jeruk	"<<endl;
+	cout<<"Rp.20000	"<<"Rp.15000	"<<"Rp.20000	"<<endl<<endl;
+	cout<<"Silahkan pilih Menu Utama: ";
+	cin>>utama.kode;
+
+	if((utama.kode=='A')||(utama.kode=='a'))
+	{
+		utama.MA="Ayam Penyet";
+		utama.MI="Es Teh Manis";
+		utama.harga=20000;
+	}
+
+	else if((utama.kode=='B')||(utama.kode=='b'))
+	{
+		utama.MA="Ayam Gulai";
+		utama.MI="Es Blewah";
+		utama.harga=15000;
+	}
+
+	else if((utama.kode=='C')||(utama.kode=='c'))
+	{
+		utama.MA="Ayam Bakar";
+		utama.MI="Es Jeruk";
+		utama.harga=15000;
+	}
+	
+	else
+	{
+		cout<<"Menu tidak terdaftar"<<endl;
+		getch();
+		system("cls");
+		goto pilihlagi;
+	}
+	cout<<"Jumlah menu yang dipesan: ";
+	cin>>jumlah;
+	cout<<endl;
+	total=total+(jumlah*utama.harga);
+	cout<<"Terima Kasih :)"<<endl;
+	getch();
+	system("cls");
+}
+
+void menu2()
+{
+pilihlagi2:;
+	cout<<"MENU TAMBAHAN"<<endl<<endl;
+	cout<<"Kode Paket: 101 - Nasi Putih - Rp.3000"<<endl;
+	cout<<"Kode Paket: 102 - Nasi Merah - Rp.5000"<<endl;
+	cout<<"Kode Paket: 201 - Nasi Sambal Korek - Rp.2000"<<endl;
+	cout<<"Kode Paket: 301 - Es Teh - Rp.3000"<<endl;
+	cout<<"Kode Paket: 302 - Es Jeruk - Rp.3000"<<endl<<endl;
+	cout<<"Silahkan pilih Menu Tambahan: ";
+	cin>>tambahan.kode;
+
+	if(tambahan.kode==101)
+	{
+		tambahan.menu="Nasi Putih";
+		tambahan.harga=3000;
+	}
+	else if(tambahan.kode==102)
+	{
+		tambahan.menu="Nasi Merah";
+		tambahan.harga=5000;
+	}
+	else if(tambahan.kode==201)
+	{
+		tambahan.menu="Sambal Korek";
+		tambahan.harga=2000;
+	}
+	else if(tambahan.kode==301)
+	{
+		tambahan.menu="Es Teh";
+		tambahan.harga=3000;
+	}
+	else if(tambahan.kode==302)
+	{
+		tambahan.menu="Es Jeruk";
+		tambahan.harga=3000;
+	}
+	else
+	{
+		cout<<"Menu tidak terdaftar"<<endl;
+		getch();
+		system("cls");
+		goto pilihlagi2;
+	}
+	cout<<"Jumlah menu yang dipesan: ";
+	cin>>jumlah;
+	cout<<endl;
+	total=total+(jumlah*tambahan.harga);
+	cout<<"Terima Kasih :)"<<endl;
+	getch();
+	system("cls");
+}
+
+void menu3()
+{
+	pajak=(total*10)/100;
+	cout<<"Total Pajak 10% dari transaksi adalah: Rp."<<pajak<<endl;
+	getch();
+	system("cls");
+}
+
+void menu4()
+{
+	cout<<"Total Transaksi anda adalah: Rp."<<total+pajak<<endl;
+	getch();
+	system("cls");
+}
+
+void main()
+{	
+menu:;
+	int pilih;
+	cout<<"WARTEG SURTI"<<endl<<endl;
+	cout<<"1. Menu Utama"<<endl;
+	cout<<"2. Menu Tambahan"<<endl;
+	cout<<"3. Pajak Transaksi"<<endl;
+	cout<<"4. Total Transaksi"<<endl<<endl;
+	cout<<"Pilih Menu: ";
+	cin>>pilih;
+	system("cls");
+
+	if(pilih==1)
+	{
+		menu1();
+		goto menu;
+	}
+
+	else if(pilih==2)
+	{
+		menu2();
+		goto menu;
+	}
+
+	else if(pilih==3)
+	{
+		menu3();
+		goto menu;
+	}
+
+	else if(pilih==4)
+	{
+		menu4();
+		goto menu;
+	}
+
+	else
+	{
+		exit(0);
+	}
+}
